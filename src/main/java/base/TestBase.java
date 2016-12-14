@@ -1,11 +1,13 @@
 package base;
 
+import helper.DateManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
-import java.lang.System;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -14,7 +16,7 @@ import java.util.concurrent.TimeUnit;
 public class TestBase {
 
     private static final String URL = "https://www.tut.by";
-    protected WebDriver driver;
+    protected static WebDriver driver;
 
     @BeforeMethod
     public void setup(){
@@ -28,4 +30,9 @@ public class TestBase {
     public void close(){
         driver.close();
     }
+
+    public static WebDriver getDriver(){
+        return driver;
+    }
+
 }

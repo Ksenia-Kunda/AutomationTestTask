@@ -8,8 +8,8 @@ import java.util.Formatter;
  */
 public class DateManager {
 
-    private Date date;
-    private Formatter formatter;
+    private static Date date;
+    private static Formatter formatter;
 
     public DateManager() {
         date = new Date();
@@ -20,4 +20,5 @@ public class DateManager {
         formatter.format("%tD %tH:%tM:%tS", date, date, date, date);
         return "Subject " + formatter.toString();
     }
+
 }

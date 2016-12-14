@@ -4,9 +4,6 @@ import base.PageBase;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import page.logIn.AddUserLoginPage;
 import send.SendEMail;
 
 import java.util.List;
@@ -20,7 +17,7 @@ public class MailPage extends PageBase {
 
     private static final By SUBJECT_FIELD = get("MailPage.Subject");
     private static final By SENT_FOLDER_BUTTON = get("MailPage.Sent");
-    private static final By USER_ICON = get("MailPage.UserIcon");
+    private static final By FOR_TUT_BY_BUTTON = get("MailPage.ForTutByButton");
     private static final By ADD_USER = get("MailPage.AddUser");
     private static final By INBOX_FOLDER_BUTTON = get("MailPage.Inbox");
     private Boolean compareResult = false;
@@ -39,7 +36,7 @@ public class MailPage extends PageBase {
 
     public Boolean findSubject() {
         try {
-            Thread.sleep(5000);
+            Thread.sleep(3000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -56,10 +53,8 @@ public class MailPage extends PageBase {
         return compareResult;
     }
 
-    public AddUserLoginPage addUser() {
-        driver.findElement(USER_ICON).click();
-        driver.switchTo().activeElement();
-        driver.findElement(ADD_USER).click();
-        return new AddUserLoginPage(driver);
+    public HomePage goToHomePage() {
+        driver.findElement(FOR_TUT_BY_BUTTON).click();
+        return new HomePage(driver);
     }
 }

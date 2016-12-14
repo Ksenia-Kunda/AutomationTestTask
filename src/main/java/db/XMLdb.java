@@ -27,7 +27,7 @@ public class XMLdb {
     private static final String LOGIN_TAG_NAME = "Login";
     private static final String PASSWORD_TAG_NAME = "Password";
     private static final String ROOT_TAG_NAME = "DB";
-    private static final String PATH = "E:\\java\\EPAM\\src\\main\\resources\\XMLdb.xml";
+    private static final String PATH = "\\src\\main\\resources\\XMLdb.xml";
     private static String accountData[] = new String[2];
 
     public static void createXML() {
@@ -56,7 +56,7 @@ public class XMLdb {
 
             DOMSource source = new DOMSource(document);
 
-            StreamResult streamResult = new StreamResult(new File(PATH));
+            StreamResult streamResult = new StreamResult(new File(System.getProperty("user.dir")+PATH));
             transformer.transform(source, streamResult);
         } catch (TransformerException e) {
             e.printStackTrace();
@@ -76,7 +76,7 @@ public class XMLdb {
 
     public static String[] readXML(int account) {
 
-        File xmlFile = new File(PATH);
+        File xmlFile = new File(System.getProperty("user.dir")+PATH);
 
         try {
             Document document = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(xmlFile);

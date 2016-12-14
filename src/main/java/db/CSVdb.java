@@ -19,7 +19,7 @@ public class CSVdb {
     private static final String LOGIN_NAME = "Ksenia00";
     private static final String DOMAIN = "@tut.by";
     private static final String PASSWORD = "AutomationTest";
-    private static final String PATH = "E:\\java\\EPAM\\src\\main\\resources\\CSVdb.csv";
+    private static final String PATH = "/src/main/resources/CSVdb.csv";
     private static List<String[]> accountsCreator;
     private static List<String> accounts;
 
@@ -37,7 +37,7 @@ public class CSVdb {
             }
         } while (i < 10);
         try {
-            FileWriter fileWriter = new FileWriter(PATH);
+            FileWriter fileWriter = new FileWriter(System.getProperty("user.dir")+PATH);
             fileWriter.append(FILE_HEADER);
             for (String[] accountData : accountsCreator) {
                 fileWriter.append(NEW_LINE);
@@ -57,7 +57,7 @@ public class CSVdb {
     public static String readCSV(int acc) {
 
         accounts = new ArrayList<String>();
-        File file = new File(PATH);
+        File file = new File(System.getProperty("user.dir")+PATH);
         try {
             Scanner scanner = new Scanner(file);
             while (scanner.hasNext()) {

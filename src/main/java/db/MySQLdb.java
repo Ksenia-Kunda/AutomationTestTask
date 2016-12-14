@@ -17,7 +17,7 @@ public class MySQLdb {
     private static Statement statement;
     private static List<String[]> accounts;
 
-    public void createMySQLdb() {
+    public static void createMySQLdb() {
 
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -40,12 +40,12 @@ public class MySQLdb {
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/accounts?autoReconnect=true&useSSL=false", "root", "root");
             statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery("SELECT * FROM users");
+            int i = 0;
             while (resultSet.next()) {
                 accounts.add(new String[2]);
-                for (String[] user : accounts) {
-                    user[0] = resultSet.getString(2);
-                    user[1] = resultSet.getString(3);
-                }
+                accounts.get(i)[0] = resultSet.getString(2);
+                accounts.get(i)[1] = resultSet.getString(3);
+                i++;
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -54,12 +54,12 @@ public class MySQLdb {
     }
 
     public static String getLogin(int acc) {
-        String[] accData = readMySQLdb(acc);
+        String[] accData = readMySQLdb(acc-1);
         return accData[0];
     }
 
     public static String getPassword(int acc) {
-        String[] accData = readMySQLdb(acc);
+        String[] accData = readMySQLdb(acc-1);
         return accData[1];
     }
 }

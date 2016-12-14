@@ -1,7 +1,6 @@
-package page.logIn;
+package page;
 
 import base.PageBase;
-import db.OptionDB;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import page.MailPage;
@@ -12,7 +11,7 @@ import static helper.Locators.get;
 /**
  * Created by Ksenia on 10.12.2016.
  */
-public class MailEntrancePage extends PageBase implements LogIn {
+public class MailEntrancePage extends PageBase{
 
     private static final By USERNAME_INPUT = get("MailEntrancePage.InputUserName");
     private static final By PASSWORD = get("MailEntrancePage.InputPassword");
@@ -35,9 +34,9 @@ public class MailEntrancePage extends PageBase implements LogIn {
         return new MailPage(driver);
     }
 
-    public MailPage fillAllFields(int choiceDB, int accFrom) {
-        usernameInput(OptionDB.choiceDB(choiceDB, accFrom, 1));
-        passwordInput(OptionDB.choiceDB(choiceDB, accFrom, 2));
+    public MailPage fillAllFields(String loginAccFrom, String passwordAccFrom) {
+        usernameInput(loginAccFrom);
+        passwordInput(passwordAccFrom);
         entranceButtonClick();
         return new MailPage(driver);
     }
