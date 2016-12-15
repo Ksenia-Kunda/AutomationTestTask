@@ -56,7 +56,7 @@ public class XMLdb {
 
             DOMSource source = new DOMSource(document);
 
-            StreamResult streamResult = new StreamResult(new File(System.getProperty("user.dir")+PATH));
+            StreamResult streamResult = new StreamResult(new File(System.getProperty("user.dir") + PATH));
             transformer.transform(source, streamResult);
         } catch (TransformerException e) {
             e.printStackTrace();
@@ -76,7 +76,7 @@ public class XMLdb {
 
     public static String[] readXML(int account) {
 
-        File xmlFile = new File(System.getProperty("user.dir")+PATH);
+        File xmlFile = new File(System.getProperty("user.dir") + PATH);
 
         try {
             Document document = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(xmlFile);

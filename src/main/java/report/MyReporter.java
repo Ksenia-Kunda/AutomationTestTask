@@ -4,8 +4,6 @@ import base.TestBase;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.IOException;
@@ -14,6 +12,7 @@ import java.io.IOException;
  * Created by Ksenia on 11.12.2016.
  */
 public class MyReporter {
+    private static String result = "";
 
 
     public static String createScreenshot(String screenshotName) {
@@ -30,4 +29,14 @@ public class MyReporter {
     }
 
 
+    public static String testResult(Boolean bool) {
+        if (bool == true) {
+            result = "Test passed";
+        } else {
+            result = "Test failed";
+        }
+        return result;
+    }
 }
+
+

@@ -15,11 +15,14 @@ public class MyListener implements ITestListener {
     }
 
     public void onTestSuccess(ITestResult iTestResult) {
-
+        System.out.println(iTestResult.getStatus());
     }
 
     public void onTestFailure(ITestResult iTestResult) {
         MyReporter.createScreenshot(iTestResult.getName());
+        System.out.println(iTestResult.getStatus());
+        System.out.println(iTestResult.getThrowable().getCause());
+
     }
 
     public void onTestSkipped(ITestResult iTestResult) {
@@ -37,4 +40,5 @@ public class MyListener implements ITestListener {
     public void onFinish(ITestContext iTestContext) {
 
     }
+
 }
